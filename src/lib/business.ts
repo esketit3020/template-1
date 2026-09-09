@@ -204,5 +204,9 @@ export function yearsTrading(): number {
   return new Date().getFullYear() - business.foundedYear;
 }
 
+/** Always a valid absolute URL — never empty, never trailing-slash. */
 export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://www.ironbarkroofing.com.au";
+  (process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://www.ironbarkroofing.com.au").replace(
+    /\/$/,
+    "",
+  );
